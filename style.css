@@ -1,7 +1,7 @@
 
 * {
 margin: 0;
-padding: 10px;
+/* padding: 10px; */
 box-sizing: border-box;
 } 
 
@@ -81,6 +81,9 @@ figure {
   padding: 1rem;
   color: white;
   z-index: 1;
+    /* remove flex properties that break inline text */
+  display: block;
+  text-align: center; /* optional, if you want centered text */
     }
 
 .step {
@@ -103,14 +106,74 @@ figure {
 }
 
 /*letter styling for tip category (during steps)*/
- #C {
+ #c {
   color: orange;
-  display: inline;
+  display: inline-block;
   padding: 0;
+  margin: 0 0.1em;
  }
 
-#D {
+#d {
   color: red;
-  display: inline;
+  display: inline-block;
   padding: 0;
+  margin: 0 0.1em;
+}
+
+
+
+@media (max-width: 760px) {
+  /* Steps flow like normal text */
+  .step {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 1rem 0 !important;
+    padding: 1rem !important;
+    color: black;
+    background-color: white;
+    display: block !important;
+  }
+
+  .map-container {
+  width: 100%;
+  height: 300px; /* mobile height */
+  margin-top: 1rem;
+}
+
+  /* Hide the main map */
+  #map {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* Make step-level map fill most of the viewport below text */
+  .map-container {
+    width: 100% !important;
+    height: 70vh !important;       /* fills most of mobile viewport */
+    margin-top: 1rem;
+  }
+
+  /* Ensure the SVG or image fills container without overflow */
+  .map-container svg,
+  .map-container img {
+    width: 100% !important;
+    height: 100% !important;       /* fills container height */
+    object-fit: contain;           /* maintain aspect ratio */
+    display: block !important;
+  }
+
+  /* Remove sticky figure leftover */
+  figure {
+    position: static !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Remove forced min-height */
+  #scrolly {
+    min-height: auto !important;
+  }
 }

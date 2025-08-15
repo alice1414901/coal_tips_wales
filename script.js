@@ -78,7 +78,7 @@ function drawChart(stepIndex) {
           console.log(category);
           if (category == "C") {return "orange"}
           if (category == "D") {return "red"}
-          else return "gray";
+          else return "none";
         }));
       break;
 
@@ -94,39 +94,135 @@ function drawChart(stepIndex) {
   }
 }
 
-// init scrollama 
-function setupScroll() {
-  const isMobile = window.innerWidth < 400; //CHECK BEST DIMENSIONS 
-  scroller = scrollama(); //assigning to global
-  const steps = document.querySelectorAll('.step');
-  //const graphicText = document.getElementById('graphic-text');
+// init scrollama, desktop or mobile? 
+// function setupScroll() {
+//   const isMobile = window.innerWidth < 760; //CHECK BEST DIMENSIONS 
+//   scroller = scrollama(); //assigning to global
+  
+//   const steps = document.querySelectorAll('.step');
+//   //const graphicText = document.getElementById('graphic-text');
 
-  function handleStepEnter(response) {
-    steps.forEach((step, i) => {
-      step.classList.toggle('is-active', i === response.index);
+//   function handleStepEnter(response) {
+//     steps.forEach((step, i) => {
+//       step.classList.toggle('is-active', i === response.index);
+//     });
+//     drawChart(response.index); 
+//     console.log("entered step:", response.index);
+
+//   }
+  
+//   //desktop setup 
+//   if (!isMobile) {
+//     scroller
+//       .setup({
+//         step: ".step",
+//         offset: 0.75,
+//         debug: false,
+//       })
+//       .onStepEnter(handleStepEnter);
+//   }
+//   else {
+//   d3.selectAll(".step").each(function(d, i) {
+//     const container = d3.select(this).select(".map-container");
+//     drawChart(i, container);
+//   });
+
+//   }
+// }
+
+
+//new 
+function setupScroll(){
+  const isMobile = window.innerWidth < 760;
+  const steps = document.querySelectorAll(".step");
+
+  //desktop: scrollama 
+  if (!isMobile){
+    scroller = scrollama();
+    scroller.setup({
+      step: ".step",
+      offset: 0.75,
+      debug: false,
+    })
+    .onStepEnter((response) => {
+      steps.forEach((step, i) => {
+        step.classList.toggle("is-active", i === response.index);
+      });
+      drawChart(response.index);
     });
-    drawChart(response.index); 
-    console.log("entered step:", response.index);
-
-  }
-
-  if (!isMobile) {
-    scroller
-      .setup({
-        step: ".step",
-        offset: 0.75,
-        debug: false,
-      })
-      .onStepEnter(handleStepEnter);
-  }
-  else {
-  d3.selectAll(".step").each(function(d, i) {
-    const container = d3.select(this).select(".map-container");
-    drawChart(i, container);
-  });
-
+  } else {
+    //mobile: draws a chart inside each step
+    steps.forEach((step, i) => {
+      const container = step.querySelector(".map-container");
+      drawChartMobile(i, container);
+    });
   }
 }
+function drawChartMobile(stepIndex, container) {
+  const {map, tips} = mapData;
+
+  // Clear previous chart if exists
+  d3.select(container).selectAll("svg").remove();
+
+  const width = container.clientWidth;
+  const height = 300; // fixed height for mobile
+
+  const svg = d3.select(container)
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+  const projection = d3.geoMercator().fitSize([width, height], map);
+  const path = d3.geoPath().projection(projection);
+
+  // Draw boundaries
+  svg.append("g")
+    .selectAll("path")
+    .data(map.features)
+    .join("path")
+    .attr("d", path)
+    .attr("fill", "#eee")
+    .attr("stroke", "#333");
+
+  // Draw tips
+  svg.append("g")
+    .selectAll("circle")
+    .data(tips.features.filter(d => d.geometry && d.geometry.coordinates))
+    .join("circle")
+    .attr("cx", d => projection(d.geometry.coordinates)[0])
+    .attr("cy", d => projection(d.geometry.coordinates)[1])
+    .attr("r", 3)
+    .attr("fill", "#888")
+    .attr("opacity", 0);
+
+  // Customize by step
+  switch(stepIndex) {
+    case 0:
+      svg.selectAll("circle").attr("opacity", 0.2).attr("fill", "blue");
+      break;
+    case 1:
+      svg.selectAll("circle").attr("opacity", 0.6).attr("fill", d => {
+        const cat = d.properties.cat?.toUpperCase();
+        return cat === "C" ? "orange" : cat === "D" ? "red" : "gray";
+      });
+      break;
+    case 2:
+      // you can add any static chart style for step 2
+      break;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 //calling initial functions
 // setUpMap().then(setupScroll);
