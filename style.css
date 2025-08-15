@@ -1,0 +1,116 @@
+
+* {
+margin: 0;
+padding: 10px;
+box-sizing: border-box;
+} 
+
+span {
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+    
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, p, figure {
+  font-family: "Cormorant Garamond", "Garamond", "Georgia", serif;
+}
+
+img { /*hard coded*/
+  width: 533px;
+  height: 400px;
+}
+
+#title-intro-box {
+  display: flex;
+  justify-content: center;
+  border: 1px solid orange;
+}
+#title-intro {
+  padding: 10px;
+  border: 1px solid green;
+}
+
+#explainer {
+  border: 1px solid purple;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 700px; /*ERRRRRR*/
+}
+/*scrollama */
+#scrolly {
+  position: relative;
+  min-height: calc(100vh + (200px + 100px) * 4); /*DESKTOP ONLY*/
+  margin-bottom: 0;
+  /* padding-bottom: 100vh; */
+  border: 1px solid red;
+}
+
+figure {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: white;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+}
+
+.step {
+  position: relative;
+  width: 40%;
+  height: 200px;
+  margin: 300px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  padding: 1rem;
+  color: white;
+  z-index: 1;
+    }
+
+.step {
+  background: gray;
+}
+
+.step.is-active {
+  outline: 1px solid black;
+  background: #a2c9b6;
+}
+
+/* #outro {
+  height: 150vh;
+} */
+
+#map {
+  width: 80vw;
+  height: 95vh;
+  border: 1px solid blue;
+}
+
+/*letter styling for tip category (during steps)*/
+ #C {
+  color: orange;
+  display: inline;
+  padding: 0;
+ }
+
+#D {
+  color: red;
+  display: inline;
+  padding: 0;
+}

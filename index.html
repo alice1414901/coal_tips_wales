@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="title-intro-box">
+  <div id="title-intro">
+    <h1>After industry leaves: What’s the legacy of South Wales’ coal tips?</h1>
+    <p>Decades after the end of coal mining in Wales, the left behind waste continues to mark the landscape.</p>
+    <div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Spoil_Tips_Above_Blaenavon_-_geograph.org.uk_-_2872402.jpg/1920px-Spoil_Tips_Above_Blaenavon_-_geograph.org.uk_-_2872402.jpg">
+<p>A coal tip in Blaenavon</p>
+    </div>
+</div>
+</div>
+    <section id="scrolly">
+  <figure>
+    <div id="graphic-text"></div> <!--text for/on map here if needed-->
+    <div id="map"></div>
+  </figure>
+
+  <div class="step" data-step="0">At its height, the South Wales coalfield employed around a quarter of a million people. Mining generated enormous amounts of waste, known as coal spoil, which was pilled onto the hillsides surrounding the mines. Coal tips are these large man-made heaps of mining waste. Across Wales, there are 2574 of them. </div>
+  <div class="step" data-step="1">The main concerns surrounding coal tips are the risk of collapse, or their ability to worsen flooding due to poor drainage. However, not all tips carry the same level of risk. 360 are classified as Category C or D, the highest risk classifications, meaning they pose a risk to human life or infrastructure.</div>
+  <div class="step" data-step="2">The danger isn’t evenly spread. Of the most dangerous tips, over 85% are located in the South Wales valleys; where the majority of the former coal industry was concentrated. Many residents here are the children and grandchildren of miners.</div>
+  <div class="step" data-step="3">Rhondda Cynon Taf has 83 category C and D coal tips — more than any other local authority. The area is where the 1966 Aberfan disaster killed 144 people children due to a collapsing coal tip, and, more recently, a collapsed coal tip caused a landslide in Tylorstown in 2020. </div>
+  <div id="outro"></div>
+</section>
+
+<section >
+    <article id="explainer">
+            <h1>Explainer: Who is responsible for coal tip safety in Wales?</h1>
+            <p>Coal tips are ranked on a letter system (A-D) with C and D tips (more dangerous) subject to more frequent inspections. Several organisations are involved in keeping coal tips safe:</p>
+            <h3>Coal Tip Safety Taskforce</h3>
+            <p>This was set up by the UK and Welsh governments following a landslide in Tylorstown, Rhondda Cynon Taff in 2020. They coordinate the identification and assessment of disused coal tips.</p>
+            <h3>Mining Remediation Authority (MRA)</h3>
+            <p>Responsible for inspections and maintaining the national database of coal tips. The MRA prioritises the most dangerous tips for more frequent inspections.</p>
+            <h3>Natural Resources Wales (NRW)</h3>
+            <p>Provides assistance during risk assessments.</p>
+            <h3>Local Authorities</h3>
+            <p>Responsible for maintenance and repair work identified during inspections. Responsibility for disused coal tips is with local authorities, although they have only limited powers of intervention. Councils deal with coal tips differently. Rhondda Cynon Taff for example has a dedicated team for monitoring coal tips while other councils make coal tip safety a department’s responsibility. In Monmouthshire, an Assistant Engineer from the Flood Risk Management Team carries out coal tip safety work.</p>
+        
+            <h2>Who owns the tips?</h2>
+            <p>Efforts are further complicated by a variety of ownership patterns. 30% of coal tips are publicly owned, 42% are privately owned, 20% are owned by businesses and 8% have either have no clear majority ownership or are unregistered. </p>
+            <p>This matters because private landowners are responsible for the safety of tips on their property. The new Disused Mine and Quarry Tips (Wales) Bill grants the new Disused Tip Authority the power to require owners to carry out remedial work on their own land.</p>
+        
+            <h2>Who pays?</h2>
+            <p>Coal tip monitoring and maintenance is funded through a combination of local authority budgets, ad hoc government grants and project specific support.</p>
+            <p>As part of the Coal Tip Safety Grant Scheme in March 2025, the Welsh Government allocated £34 million to 10 local authorities and NRW. The UK Government provided a further £25 million towards management in the 2025 Autumn budget.</p>
+            <p>While coal tip management is a devolved issue, some within the Senedd have argued that since coal tips are a legacy which predates devolution, it is the responsibility of Westminster to foot the bill, which some estimate to be around £600 million.</p>
+        </article>
+
+    <h1>Read more below</h1>
+    <div id="stories">
+        <a href="article1.html">
+    <div class="story">
+        <h2>Story 1</h2>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam distinctio laborum, reiciendis temporibus reprehenderit dolorem nam atque debitis soluta, sed necessitatibus saepe dolores cupiditate officia culpa tempore aut iusto optio?</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Nokota_Horses_cropped.jpg">
+    </div>
+    </a>
+    <hr>
+    <a href="skills.html">
+    <div class="story">
+        <h2>Skills shortage</h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Magnolia_grandiflora_-_flower_1.jpg/1920px-Magnolia_grandiflora_-_flower_1.jpg">
+    </div>
+    </a>
+    <hr>
+    <div class="story">
+        <h2>Nature and coal tips</h2>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/59/%22Oceanos%22_-_Piraeus%2C_1986.jpg">
+    </div>
+    </div>
+</section>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/topojson-client@3"></script>
+<script src="https://unpkg.com/scrollama"></script>
+<script src="script.js"></script>
+</body>
+</html>
